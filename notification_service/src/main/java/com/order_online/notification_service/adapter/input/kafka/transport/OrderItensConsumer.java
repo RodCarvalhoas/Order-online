@@ -1,4 +1,4 @@
-package com.order_online.user_service.adapter.output.messaging.kafka.transport;
+package com.order_online.notification_service.adapter.input.kafka.transport;
 
 public record OrderItensConsumer(
         Long id,

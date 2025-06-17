@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "98b7c068-cfff-4b45-aa75-190565d047d0",
+		"name": "Order-Online",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24663866"
+	},
+	"item": [
+		{
+			"name": "RegisterUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"authToken\", pm.response.json().acessToken);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Rodrigo\",\r\n    \"balance\": 40,\r\n    \"email\": \"teste@teste.com.br\",\r\n    \"password\": \"123456\",\r\n    \"userRole\": \"BUSINESS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user-service/api/v1/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user-service",
+						"api",
+						"v1",
+						"user"
+					]
+				},
+				"description": "## Register User API\n\nThis endpoint is used to register a new user in the system. Upon successful registration, it returns an access token that can be used for authentication in subsequent requests.\n\n### HTTP Request\n\n- **Method**: POST\n    \n- **URL**: `http://localhost:8080/user-service/api/v1/user`\n    \n\n### Request Body\n\nThe request body must be in JSON format and include the following parameters:\n\n- **name** (string): The name of the user.\n    \n- **balance** (number): The initial balance for the user.\n    \n- **email** (string): The email address of the user.\n    \n- **password** (string): The password for the user's account.\n    \n- **userRole** (string): The role assigned to the user (e.g., BUSINESS).\n    \n\n#### Example Request Body\n\n``` json\n{\n  \"name\": \"Rodrigo\",\n  \"balance\": 40,\n  \"email\": \"teste@teste.com.br\",\n  \"password\": \"123456\",\n  \"userRole\": \"BUSINESS\"\n}\n\n ```\n\n### Response\n\nOn successful registration, the API will return a response with the following attributes:\n\n- **Status**: `201 Created`\n    \n- **Content-Type**: `application/json`\n    \n- **Response Body**:\n    \n    - **accessToken** (string): A token that can be used for authenticating future requests.\n        \n\n#### Example Response\n\n``` json\n{\n  \"accessToken\": \"\"\n}\n\n ```\n\n### Usage Note\n\nTo store the `accessToken` from the response into the `authToken` variable in the Order-Online environment, you can use the following script in the Tests tab of your Postman request:\n\n``` javascript\npm.environment.set(\"authToken\", pm.response.json().accessToken);\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"authToken\", \"Bearer \" + pm.response.json().acessToken);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"teste@teste.com.br\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user-service/api/v1/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user-service",
+						"api",
+						"v1",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateOrder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderItens\": [\r\n        {\r\n            \"name\": \"Produto1\",\r\n            \"price\": 20.0\r\n        }\r\n    ],\r\n    \"total\": 20.0,\r\n    \"customerId\": \"1\",\r\n    \"businessId\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/order-service/api/v1/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"order-service",
+						"api",
+						"v1",
+						"order"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

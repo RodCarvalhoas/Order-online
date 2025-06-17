@@ -52,12 +52,10 @@ A aplicação é composta pelos seguintes serviços:
 
 ## 🧪 Testes
 
-A Collection do **Postman** está disponível no repositório com todos os fluxos de testes:
+A Collection do **Postman** (Lembrar de selecionar o environment correto no postman) está disponível no repositório com todos os fluxos de testes:
 
-- Cadastro e login do usuário
-- Geração do token
+- Cadastro e login do usuário (Esses geram os tokens)
 - Criação de pedido autenticado
-- Visualização de notificações enviadas
 
 ---
 

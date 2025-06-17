@@ -2,7 +2,7 @@
 
 Este é um projeto de prova de conceito (PoC) de um sistema de **pedidos online** distribuído, com foco em **microsserviços**, **eventos assíncronos via Kafka** e **redução de latência** por meio de uma arquitetura desacoplada.
 
-O objetivo principal desta PoC é demonstrar como um processo que normalmente seria sequencial (ex: criar pedido, debitar saldo, enviar notificação) pode ser transformado em uma **arquitetura orientada a eventos**, com serviços independentes e escaláveis.
+O objetivo principal desta PoC é demonstrar como um processo que normalmente seria sequencial (ex: criar pedido, debitar saldo, enviar notificação) pode ser transformado em uma **arquitetura pub/sub**, com serviços independentes e escaláveis.
 
 ---
 
